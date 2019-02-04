@@ -1,0 +1,13 @@
+language: php
+php:
+  - '7.1'
+  - '7.2'
+
+before_install:
+  - composer install
+
+script:
+  - ./vendor/bin/php-cs-fixer fix Scherzetto/
+  - ./vendor/bin/phpstan analyse -lmax Scherzetto/
+  - ./vendor/bin/phpunit Scherzetto/ --coverage-clover ./docs/coverage/xml --whitelist ./Scherzetto --log-junit ./test-results/phpunit/results.xml
+  - ./vendor/bin/codacycoverage clover ./docs/coverage/xml

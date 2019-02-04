@@ -8,7 +8,7 @@ declare(strict_types=1);
  * Time: 14:54.
  */
 
-namespace Scherzetto\Env\Parser\Test;
+namespace Scherzetto\Env\Test\Parser;
 
 use Scherzetto\Env\Parser\DotenvParser;
 use PHPUnit\Framework\TestCase;
@@ -21,9 +21,9 @@ class DotenvParserTest extends TestCase
     /** @var DotenvParser */
     private $parser;
 
-    public function setUp()
+    public function setUp(): void
     {
-        $this->data = file_get_contents('./tests/fixtures/.env.test');
+        $this->data = file_get_contents('./Scherzetto/Env/Test/fixtures/.env.test');
         $this->parser = new DotenvParser();
     }
 

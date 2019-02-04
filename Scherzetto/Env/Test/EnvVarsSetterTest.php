@@ -23,13 +23,15 @@ class EnvVarsSetterTest extends TestCase
     /** @var EnvVarsSetter */
     private $setter;
 
-    private $envPath = './tests/fixtures/.env';
+    private $envPath = './Scherzetto/Env/Test/fixtures/.env.test';
 
-    public function setUp()
+    public function setUp(): void
     {
-        $this->parser = $this->getMockBuilder(DotenvParser::class)
+        /** @var DotenvParser&MockObject $parser */
+        $parser = $this->getMockBuilder(DotenvParser::class)
             ->setMethods(['parse'])
             ->getMock();
+        $this->parser = $parser;
         $this->parser->/** @scrutinizer ignore-call */method('parse')->willReturn(['TEST_FOO' => 'foo']);
         $this->setter = new EnvVarsSetter($this->parser);
     }
